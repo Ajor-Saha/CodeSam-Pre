@@ -8,7 +8,15 @@ const userRoutes = require("./routes/user.route");
 const stationRoutes = require("./routes/station.route")
 
 
-connectToDatabase()
+mongoose
+   .connect(process.env.MONGO_URI)
+   .then(() => {
+    console.log("Mongodb is connected");
+   })
+   .catch((err) => {
+    console.log(err);
+   })
+
 
 
 const app = express();
